@@ -6,6 +6,7 @@ enum CallToActionType {
   primary,
   secondary,
   tertiary,
+  danger,
 }
 
 class CallToAction extends StatelessWidget {
@@ -64,6 +65,17 @@ class CallToAction extends StatelessWidget {
       ),
     );
 
+    TextButtonThemeData dangerTheme = TextButtonThemeData(
+      style: TextButton.styleFrom(
+        backgroundColor: AppColors.dangerColor,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(32),
+          ),
+        ),
+      ),
+    );
+
     getButtonTheme() {
       switch (type) {
         case CallToActionType.primary:
@@ -72,6 +84,8 @@ class CallToAction extends StatelessWidget {
           return secondaryTheme;
         case CallToActionType.tertiary:
           return tertiaryTheme;
+        case CallToActionType.danger:
+          return dangerTheme;
       }
     }
 
@@ -83,6 +97,8 @@ class CallToAction extends StatelessWidget {
           return AppColors.textTertiaryColor;
         case CallToActionType.tertiary:
           return AppColors.textSecondaryColor;
+        case CallToActionType.danger:
+          return AppColors.textQuaternaryColor;
       }
     }
 
