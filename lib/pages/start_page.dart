@@ -1,5 +1,6 @@
 import 'package:cook_snap/components/shared/buttons/call_to_action.dart';
 import 'package:cook_snap/mocks/cms.dart';
+import 'package:cook_snap/types/themes.dart';
 import 'package:flutter/material.dart';
 
 class StartPage extends StatelessWidget {
@@ -7,21 +8,38 @@ class StartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var imageSize = MediaQuery.of(context).size.height * 0.55;
+    var imageSize = MediaQuery.of(context).size.height * 0.4;
     return Scaffold(
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Placeholder(
               fallbackHeight: imageSize,
             ),
-            Text(CMS().startPage.title),
-            Text(CMS().startPage.description),
-            CallToAction(
-              text: 'Get Started',
-              type: CallToActionType.tertiary,
-              onPressed: () {},
+            Column(
+              children: [
+                Text(
+                  CMS().startPage.title,
+                  style: TextThemes.titleTextStyle,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 62.0),
+                  child: Text(
+                    CMS().startPage.description,
+                    style: TextThemes.subtitleTextStyle,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                const SizedBox(height: 52),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 32.0),
+                  child: CallToAction(
+                    text: CMS().startPage.ctaText,
+                    onPressed: () {},
+                  ),
+                ),
+              ],
             ),
           ],
         ),
