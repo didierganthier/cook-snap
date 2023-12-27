@@ -2,7 +2,6 @@ import 'package:cook_snap/page_wrapper.dart';
 import 'package:cook_snap/pages/start_page.dart';
 import 'package:cook_snap/types/colors.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 
 void main() {
   runApp(const MyApp());
