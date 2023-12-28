@@ -1,27 +1,39 @@
-class UserModel {
-  final String userId;
-  final String username;
-  final String email;
+class FoodModel {
+  final String foodId;
+  final String name;
+  final String description;
+  final List<String> ingredients;
+  final String imageUrl;
+  final String instructions;
 
-  UserModel({
-    required this.userId,
-    required this.username,
-    required this.email,
+  FoodModel({
+    required this.foodId,
+    required this.name,
+    required this.description,
+    required this.ingredients,
+    required this.imageUrl,
+    required this.instructions,
   });
 
-  factory UserModel.fromJson(Map<String, dynamic> json) {
-    return UserModel(
-      userId: json['userId'] as String,
-      username: json['username'] as String,
-      email: json['email'] as String,
+  factory FoodModel.fromJson(Map<String, dynamic> json) {
+    return FoodModel(
+      foodId: json['foodId'] as String,
+      name: json['name'] as String,
+      description: json['description'] as String,
+      ingredients: List<String>.from(json['ingredients'] as List),
+      imageUrl: json['imageUrl'] as String,
+      instructions: json['instructions'] as String,
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'userId': userId,
-      'username': username,
-      'email': email,
+      'foodId': foodId,
+      'name': name,
+      'description': description,
+      'ingredients': ingredients,
+      'imageUrl': imageUrl,
+      'instructions': instructions,
     };
   }
 }
