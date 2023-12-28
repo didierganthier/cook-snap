@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 
-class AppConstants {}
+class AppConstants {
+  final String title = "Start Cooking";
+  final String subtitle = "Discover and share your favorite recipes";
+  final String description = "Let’s join our community to cook better food!";
+  final String ctaText = "Get Started";
+}
 
 class AppColors {
   static const Color primaryColor = Color(0xFF3f5481);

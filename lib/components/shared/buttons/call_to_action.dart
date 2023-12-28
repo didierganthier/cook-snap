@@ -1,5 +1,4 @@
-import 'package:cook_snap/types/colors.dart';
-import 'package:cook_snap/types/themes.dart';
+import 'package:cook_snap/app/constants/app_constants.dart';
 import 'package:flutter/material.dart';
 
 enum CallToActionType {

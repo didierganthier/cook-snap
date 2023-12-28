@@ -1,6 +1,6 @@
+import 'package:cook_snap/app/constants/app_constants.dart';
 import 'package:cook_snap/page_wrapper.dart';
 import 'package:cook_snap/pages/start_page.dart';
-import 'package:cook_snap/types/colors.dart';
 import 'package:flutter/cupertino.dart';
 
 void main() {

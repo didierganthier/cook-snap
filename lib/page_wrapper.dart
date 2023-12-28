@@ -1,5 +1,5 @@
+import 'package:cook_snap/app/constants/app_constants.dart';
 import 'package:cook_snap/pages/start_page.dart';
-import 'package:cook_snap/types/colors.dart';
 import 'package:flutter/material.dart';
 
 class PageWrapper extends StatelessWidget {
