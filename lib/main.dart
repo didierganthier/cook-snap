@@ -1,5 +1,5 @@
+import 'package:cook_snap/app/app.dart';
 import 'package:cook_snap/app/constants/app_constants.dart';
-import 'package:cook_snap/app/ui/screens/start/start_page.dart';
 import 'package:flutter/cupertino.dart';
 
 void main() {
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         barBackgroundColor: AppColors.primaryColor,
         scaffoldBackgroundColor: AppColors.backgroundColor,
       ),
-      home: StartPage(),
+      home: App(),
     );
   }
 }
