@@ -1,6 +1,5 @@
-import 'package:cook_snap/components/shared/buttons/call_to_action.dart';
-import 'package:cook_snap/mocks/cms.dart';
-import 'package:cook_snap/types/themes.dart';
+import 'package:cook_snap/app/constants/app_constants.dart';
+import 'package:cook_snap/app/ui/widgets/call_to_action.dart';
 import 'package:flutter/material.dart';
 
 class StartPage extends StatelessWidget {
@@ -20,13 +19,13 @@ class StartPage extends StatelessWidget {
             Column(
               children: [
                 Text(
-                  CMS().startPage.title,
+                  AppConstants().title,
                   style: TextThemes.titleTextStyle,
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 62.0),
                   child: Text(
-                    CMS().startPage.description,
+                    AppConstants().description,
                     style: TextThemes.subtitleTextStyle,
                     textAlign: TextAlign.center,
                   ),
@@ -35,7 +34,7 @@ class StartPage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 32.0),
                   child: CallToAction(
-                    text: CMS().startPage.ctaText,
+                    text: AppConstants().ctaText,
                     onPressed: () {},
                   ),
                 ),
