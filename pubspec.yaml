@@ -40,6 +40,7 @@ dependencies:
   # apple signin
   sign_in_with_apple: ^5.0.0
   uuid: ^4.3.3
+  google_sign_in: ^6.2.1
 
 dev_dependencies:
   flutter_test:
