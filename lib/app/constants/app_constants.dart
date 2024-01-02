@@ -1,10 +1,42 @@
+import 'package:cook_snap/app/constants/constant_classes/start_page_constants.dart';
 import 'package:flutter/material.dart';
 
 class AppConstants {
-  final String title = "Start Cooking";
-  final String subtitle = "Discover and share your favorite recipes";
-  final String description = "Let’s join our community to cook better food!";
-  final String ctaText = "Get Started";
+  String title = '';
+  String subtitle = '';
+  final String description;
+  final String ctaText;
+
+  AppConstants({
+    required this.title,
+    required this.subtitle,
+    this.description = '',
+    this.ctaText = '',
+  });
+
+  factory AppConstants.getStartPageConstants() {
+    return AppConstants(
+      title: "Start Cooking",
+      subtitle: "Discover and share your favorite recipes",
+      description: "Let’s join our community to cook better food!",
+      ctaText: "Get Started",
+    );
+  }
+
+  factory AppConstants.getLoginConstants() {
+    return StartPageConstants(
+      title: "Welcome Back!",
+      subtitle: "Please enter your account here",
+      emailFieldLabel: 'Email or phone number',
+      passwordFieldLabel: 'Password',
+      forgotPasswordCtalabel: 'Forgot password?',
+      loginCtaLabel: 'Login',
+      orContinueWithLabel: 'Or continue with',
+      googleCtaLabel: 'Google',
+      dontHaveAccountLabel: 'Don’t have an account?',
+      signupCtaLabel: 'Sign up',
+    );
+  }
 }
 
 class AppColors {
