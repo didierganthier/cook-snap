@@ -1,4 +1,5 @@
 import 'package:cook_snap/app/constants/app_constants.dart';
+import 'package:cook_snap/app/constants/constant_classes/login_page_constants.dart';
 import 'package:cook_snap/app/ui/widgets/input_field.dart';
 import 'package:flutter/material.dart';
 
@@ -7,7 +8,7 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cms = AppConstants.getLoginConstants();
+    final cms = LoginPageConstants.getConstants();
     return Scaffold(
       body: Center(
         child: Column(
@@ -23,7 +24,10 @@ class LoginPage extends StatelessWidget {
                   cms.subtitle,
                   style: TextThemes.subtitleTextStyle,
                 ),
-                const InputField(),
+                InputField(
+                  type: InputFieldType.email,
+                  hint: cms.emailFieldLabel,
+                ),
               ],
             ),
           ],

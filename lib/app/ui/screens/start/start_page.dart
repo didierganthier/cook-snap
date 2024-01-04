@@ -8,7 +8,7 @@ class StartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var imageSize = MediaQuery.of(context).size.height * 0.4;
-    final cms = AppConstants.getStartPageConstants();
+    final cms = AppConstants.getConstants();
     return Scaffold(
       body: Center(
         child: Column(
