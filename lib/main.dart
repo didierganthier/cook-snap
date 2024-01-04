@@ -1,6 +1,7 @@
 import 'package:cook_snap/app/app.dart';
 import 'package:cook_snap/app/constants/app_constants.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -21,16 +22,17 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const CupertinoApp(
+    return MaterialApp(
       title: 'Cook Snap',
-      theme: CupertinoThemeData(
+      theme: ThemeData(
         brightness: Brightness.light,
-        primaryColor: AppColors.primaryColor,
-        primaryContrastingColor: AppColors.primaryColor,
-        barBackgroundColor: AppColors.primaryColor,
         scaffoldBackgroundColor: AppColors.backgroundColor,
+        colorScheme: const ColorScheme.light(
+          primary: AppColors.primaryColor,
+          secondary: AppColors.secondaryColor,
+        ),
       ),
-      home: App(),
+      home: const App(),
     );
   }
 }

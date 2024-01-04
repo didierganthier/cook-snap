@@ -1,10 +1,26 @@
 import 'package:flutter/material.dart';
 
 class AppConstants {
-  final String title = "Start Cooking";
-  final String subtitle = "Discover and share your favorite recipes";
-  final String description = "Let’s join our community to cook better food!";
-  final String ctaText = "Get Started";
+  String title = '';
+  String subtitle = '';
+  final String description;
+  final String ctaText;
+
+  AppConstants({
+    required this.title,
+    required this.subtitle,
+    this.description = '',
+    this.ctaText = '',
+  });
+
+  factory AppConstants.getConstants() {
+    return AppConstants(
+      title: "Start Cooking",
+      subtitle: "Discover and share your favorite recipes",
+      description: "Let’s join our community to cook better food!",
+      ctaText: "Get Started",
+    );
+  }
 }
 
 class AppColors {
@@ -13,6 +29,7 @@ class AppColors {
   static const Color tertiaryColor = Color(0xFFF4F5F7);
   static const Color accentColor = Color(0xFF21CC79);
   static const Color backgroundColor = Color(0xFFFFFFFF);
+  static const Color borderColor = Color(0xFFD0DBEA);
   static const Color textColor = Color(0xFF3E5481);
   static const Color textSecondaryColor = Color(0xFF9FA5C0);
   static const Color textTertiaryColor = Color(0xFF2E3E5C);
@@ -41,5 +58,19 @@ class TextThemes {
     letterSpacing: 0.5,
     height: 1.2,
     color: AppColors.textSecondaryColor,
+  );
+
+  static const TextStyle textFieldsHintStyle = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+    letterSpacing: 0.5,
+    color: AppColors.textSecondaryColor,
+  );
+
+  static const TextStyle textFieldsStyle = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+    letterSpacing: 0.5,
+    color: AppColors.textColor,
   );
 }
