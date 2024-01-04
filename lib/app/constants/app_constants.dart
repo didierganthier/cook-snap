@@ -1,4 +1,3 @@
-import 'package:cook_snap/app/constants/constant_classes/start_page_constants.dart';
 import 'package:flutter/material.dart';
 
 class AppConstants {
@@ -14,27 +13,12 @@ class AppConstants {
     this.ctaText = '',
   });
 
-  factory AppConstants.getStartPageConstants() {
+  factory AppConstants.getConstants() {
     return AppConstants(
       title: "Start Cooking",
       subtitle: "Discover and share your favorite recipes",
       description: "Let’s join our community to cook better food!",
       ctaText: "Get Started",
-    );
-  }
-
-  factory AppConstants.getLoginConstants() {
-    return StartPageConstants(
-      title: "Welcome Back!",
-      subtitle: "Please enter your account here",
-      emailFieldLabel: 'Email or phone number',
-      passwordFieldLabel: 'Password',
-      forgotPasswordCtalabel: 'Forgot password?',
-      loginCtaLabel: 'Login',
-      orContinueWithLabel: 'Or continue with',
-      googleCtaLabel: 'Google',
-      dontHaveAccountLabel: 'Don’t have an account?',
-      signupCtaLabel: 'Sign up',
     );
   }
 }
@@ -74,5 +58,19 @@ class TextThemes {
     letterSpacing: 0.5,
     height: 1.2,
     color: AppColors.textSecondaryColor,
+  );
+
+  static const TextStyle textFieldsHintStyle = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+    letterSpacing: 0.5,
+    color: AppColors.textSecondaryColor,
+  );
+
+  static const TextStyle textFieldsStyle = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+    letterSpacing: 0.5,
+    color: AppColors.textColor,
   );
 }

@@ -1,6 +1,6 @@
 import 'package:cook_snap/app/constants/app_constants.dart';
 
-class StartPageConstants extends AppConstants {
+class LoginPageConstants extends AppConstants {
   String emailFieldLabel;
   String passwordFieldLabel;
   String forgotPasswordCtalabel;
@@ -10,7 +10,7 @@ class StartPageConstants extends AppConstants {
   String dontHaveAccountLabel;
   String signupCtaLabel;
 
-  StartPageConstants({
+  LoginPageConstants({
     required this.emailFieldLabel,
     required this.passwordFieldLabel,
     required this.forgotPasswordCtalabel,
@@ -23,4 +23,19 @@ class StartPageConstants extends AppConstants {
     required super.subtitle,
     super.description,
   });
+
+  factory LoginPageConstants.getConstants() {
+    return LoginPageConstants(
+      title: "Welcome Back!",
+      subtitle: "Please enter your account here",
+      emailFieldLabel: 'Email or phone number',
+      passwordFieldLabel: 'Password',
+      forgotPasswordCtalabel: 'Forgot password?',
+      loginCtaLabel: 'Login',
+      orContinueWithLabel: 'Or continue with',
+      googleCtaLabel: 'Google',
+      dontHaveAccountLabel: 'Don’t have an account?',
+      signupCtaLabel: 'Sign up',
+    );
+  }
 }
