@@ -1,46 +1,62 @@
 import 'package:cook_snap/app/constants/app_constants.dart';
 import 'package:flutter/material.dart';
 
+enum InputFieldType { email, password }
+
 class InputField extends StatelessWidget {
   final String? Function(String?)? validator;
-  const InputField({super.key, this.validator});
+  final InputFieldType type;
+  final String? hint;
+
+  const InputField({
+    super.key,
+    this.validator,
+    this.type = InputFieldType.email,
+    this.hint,
+  });
 
   @override
   Widget build(BuildContext context) {
+    const inputFieldBorder = OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(32.0)),
+      borderSide: BorderSide(color: AppColors.borderColor, width: 2.0),
+    );
+
+    OutlineInputBorder focusedInputFieldBorder = inputFieldBorder.copyWith(
+      borderSide: const BorderSide(color: AppColors.accentColor, width: 2.0),
+    );
+
+    Icon? getPrefixIcon() {
+      IconData iconData;
+      switch (type) {
+        case InputFieldType.email:
+          iconData = Icons.email_outlined;
+        case InputFieldType.password:
+          iconData = Icons.lock_outline;
+      }
+      return Icon(iconData);
+    }
+
     return TextFormField(
-      obscureText: true,
+      obscureText: type == InputFieldType.password,
       validator: validator,
-      style: const TextStyle(
-        color: AppColors.textColor,
-        fontSize: 16.0,
-        fontWeight: FontWeight.w500,
-      ),
+      style: TextThemes.textFieldsStyle,
       onTapOutside: (event) {
         FocusScope.of(context).unfocus();
       },
-      decoration: const InputDecoration(
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(32.0)),
-          borderSide: BorderSide(color: AppColors.borderColor, width: 2.0),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.accentColor, width: 2.0),
-          borderRadius: BorderRadius.all(Radius.circular(32.0)),
-        ),
-        hintStyle: TextStyle(
-          color: AppColors.secondaryColor,
-          fontSize: 16.0,
-          fontWeight: FontWeight.w500,
-        ),
-        prefixIcon: Icon(Icons.email_outlined),
-        suffixIcon: Icon(Icons.remove_red_eye_outlined,
-            color: AppColors.secondaryColor),
-        contentPadding: EdgeInsets.symmetric(vertical: 18.0, horizontal: 32.0),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(32.0)),
-          borderSide: BorderSide(color: AppColors.borderColor, width: 2.0),
-        ),
-        hintText: 'Enter your email',
+      decoration: InputDecoration(
+        enabledBorder: inputFieldBorder,
+        focusedBorder: focusedInputFieldBorder,
+        hintStyle: TextThemes.textFieldsHintStyle,
+        prefixIcon: getPrefixIcon(),
+        suffixIcon: type == InputFieldType.password
+            ? const Icon(Icons.remove_red_eye_outlined,
+                color: AppColors.secondaryColor)
+            : null,
+        contentPadding:
+            const EdgeInsets.symmetric(vertical: 18.0, horizontal: 32.0),
+        border: inputFieldBorder,
+        hintText: hint,
       ),
     );
   }
