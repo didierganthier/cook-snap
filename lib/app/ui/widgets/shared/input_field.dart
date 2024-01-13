@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 enum InputFieldType { email, password }
 
-class InputField extends StatelessWidget {
+class InputField extends StatefulWidget {
   final String? Function(String?)? validator;
   final InputFieldType type;
   final String? hint;
@@ -14,6 +14,13 @@ class InputField extends StatelessWidget {
     this.type = InputFieldType.email,
     this.hint,
   });
+
+  @override
+  State<InputField> createState() => _InputFieldState();
+}
+
+class _InputFieldState extends State<InputField> {
+  bool isPasswordVisible = false;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +35,7 @@ class InputField extends StatelessWidget {
 
     Icon? getPrefixIcon() {
       IconData iconData;
-      switch (type) {
+      switch (widget.type) {
         case InputFieldType.email:
           iconData = Icons.email_outlined;
         case InputFieldType.password:
@@ -37,9 +44,26 @@ class InputField extends StatelessWidget {
       return Icon(iconData);
     }
 
+    Widget? getSuffixIcon() {
+      switch (widget.type) {
+        case InputFieldType.password:
+          return IconButton(
+            icon: const Icon(Icons.remove_red_eye_outlined),
+            color: AppColors.secondaryColor,
+            onPressed: () {
+              setState(() {
+                isPasswordVisible = !isPasswordVisible;
+              });
+            },
+          );
+        default:
+          return null;
+      }
+    }
+
     return TextFormField(
-      obscureText: type == InputFieldType.password,
-      validator: validator,
+      obscureText: widget.type == InputFieldType.password && !isPasswordVisible,
+      validator: widget.validator,
       style: TextThemes.textFieldsStyle,
       onTapOutside: (event) {
         FocusScope.of(context).unfocus();
@@ -49,14 +73,11 @@ class InputField extends StatelessWidget {
         focusedBorder: focusedInputFieldBorder,
         hintStyle: TextThemes.textFieldsHintStyle,
         prefixIcon: getPrefixIcon(),
-        suffixIcon: type == InputFieldType.password
-            ? const Icon(Icons.remove_red_eye_outlined,
-                color: AppColors.secondaryColor)
-            : null,
+        suffixIcon: getSuffixIcon(),
         contentPadding:
             const EdgeInsets.symmetric(vertical: 16.0, horizontal: 32.0),
         border: inputFieldBorder,
-        hintText: hint,
+        hintText: widget.hint,
       ),
     );
   }
