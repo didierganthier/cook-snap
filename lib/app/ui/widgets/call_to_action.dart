@@ -113,26 +113,29 @@ class CallToAction extends StatelessWidget {
       onPressed: onPressed,
       onLongPress: onLongPressed,
       child: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(child: iconItem),
-            Text(
-              text,
-              style: TextThemes.ctaTextStyle.copyWith(
-                color: getTextColor(),
-                shadows: type == CallToActionType.primary
-                    ? [
-                        const Shadow(
-                          color: Color(0x33000000),
-                          offset: Offset(0, 4),
-                          blurRadius: 4,
-                        ),
-                      ]
-                    : [],
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 6.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(child: iconItem),
+              Text(
+                text,
+                style: TextThemes.ctaTextStyle.copyWith(
+                  color: getTextColor(),
+                  shadows: type == CallToActionType.primary
+                      ? [
+                          const Shadow(
+                            color: Color(0x33000000),
+                            offset: Offset(0, 4),
+                            blurRadius: 4,
+                          ),
+                        ]
+                      : [],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

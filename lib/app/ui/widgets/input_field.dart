@@ -54,7 +54,7 @@ class InputField extends StatelessWidget {
                 color: AppColors.secondaryColor)
             : null,
         contentPadding:
-            const EdgeInsets.symmetric(vertical: 18.0, horizontal: 32.0),
+            const EdgeInsets.symmetric(vertical: 16.0, horizontal: 32.0),
         border: inputFieldBorder,
         hintText: hint,
       ),
