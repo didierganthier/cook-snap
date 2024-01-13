@@ -35,6 +35,7 @@ class AppColors {
   static const Color textTertiaryColor = Color(0xFF2E3E5C);
   static const Color textQuaternaryColor = Color(0xFFFFFFFF);
   static const Color dangerColor = Color(0xFFFF5842);
+  static const Color darkColor = Color(0xFF000000);
 }
 
 class TextThemes {
@@ -72,5 +73,78 @@ class TextThemes {
     fontWeight: FontWeight.w500,
     letterSpacing: 0.5,
     color: AppColors.textColor,
+  );
+}
+
+class CallToActionTheme {
+  static TextButtonThemeData primaryTheme = TextButtonThemeData(
+    style: TextButton.styleFrom(
+      backgroundColor: AppColors.accentColor,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(
+          Radius.circular(32),
+        ),
+      ),
+    ),
+  );
+
+  static TextButtonThemeData secondaryTheme = TextButtonThemeData(
+    style: TextButton.styleFrom(
+      backgroundColor: AppColors.tertiaryColor,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(
+          Radius.circular(32),
+        ),
+      ),
+    ),
+  );
+
+  static TextButtonThemeData tertiaryTheme = TextButtonThemeData(
+    style: TextButton.styleFrom(
+      backgroundColor: AppColors.backgroundColor,
+      shape: const RoundedRectangleBorder(
+        side: BorderSide(
+          width: 2,
+          color: AppColors.textSecondaryColor,
+          strokeAlign: 0,
+        ),
+        borderRadius: BorderRadius.all(
+          Radius.circular(32),
+        ),
+      ),
+    ),
+  );
+
+  static TextButtonThemeData dangerTheme = TextButtonThemeData(
+    style: TextButton.styleFrom(
+      backgroundColor: AppColors.dangerColor,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(
+          Radius.circular(32),
+        ),
+      ),
+    ),
+  );
+
+  static TextButtonThemeData nakedTheme = TextButtonThemeData(
+    style: TextButton.styleFrom(
+      backgroundColor: Colors.transparent,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(
+          Radius.circular(32),
+        ),
+      ),
+    ),
+  );
+
+  static TextButtonThemeData darkTheme = TextButtonThemeData(
+    style: TextButton.styleFrom(
+      backgroundColor: AppColors.darkColor,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(
+          Radius.circular(32),
+        ),
+      ),
+    ),
   );
 }
