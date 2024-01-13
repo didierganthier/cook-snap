@@ -37,6 +37,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   supabase_flutter: ^2.0.2
   flutter_dotenv: ^5.1.0
+  # apple signin
+  sign_in_with_apple: ^5.0.0
+  uuid: ^4.3.3
 
 dev_dependencies:
   flutter_test:
