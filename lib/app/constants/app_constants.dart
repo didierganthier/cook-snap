@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 class AppConstants {
@@ -42,12 +44,18 @@ class TextThemes {
   static const TextStyle ctaTextStyle = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.bold,
+    fontVariations: [
+      FontVariation('wght', 700),
+    ],
     letterSpacing: 0.7,
   );
 
   static const TextStyle titleTextStyle = TextStyle(
     fontSize: 22,
     fontWeight: FontWeight.bold,
+    fontVariations: [
+      FontVariation('wght', 700),
+    ],
     letterSpacing: 0.8,
     color: AppColors.textTertiaryColor,
     height: 2.5,
@@ -56,6 +64,9 @@ class TextThemes {
   static const TextStyle subtitleTextStyle = TextStyle(
     fontSize: 17,
     fontWeight: FontWeight.normal,
+    fontVariations: [
+      FontVariation('wght', 400),
+    ],
     letterSpacing: 0.5,
     height: 1.2,
     color: AppColors.textSecondaryColor,
@@ -64,6 +75,9 @@ class TextThemes {
   static const TextStyle textFieldsHintStyle = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.w500,
+    fontVariations: [
+      FontVariation('wght', 500),
+    ],
     letterSpacing: 0.5,
     color: AppColors.textSecondaryColor,
   );
@@ -71,6 +85,9 @@ class TextThemes {
   static const TextStyle textFieldsStyle = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.w500,
+    fontVariations: [
+      FontVariation('wght', 500),
+    ],
     letterSpacing: 0.5,
     color: AppColors.textColor,
   );
