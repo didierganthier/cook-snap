@@ -11,6 +11,13 @@
 migrate_working_dir/
 *.env
 
+# IOS 
+*.lock
+*.pbxproj
+*.xcworkspacedata
+ios/Runner.xcodeproj/project.pbxproj
+ios/Runner.xcworkspace/contents.xcworkspacedata
+
 # IntelliJ related
 *.iml
 *.ipr

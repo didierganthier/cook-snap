@@ -8,6 +8,7 @@ class StartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var imageSize = MediaQuery.of(context).size.height * 0.4;
+    final cms = AppConstants.getConstants();
     return Scaffold(
       body: Center(
         child: Column(
@@ -19,13 +20,13 @@ class StartPage extends StatelessWidget {
             Column(
               children: [
                 Text(
-                  AppConstants().title,
+                  cms.title,
                   style: TextThemes.titleTextStyle,
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 62.0),
                   child: Text(
-                    AppConstants().description,
+                    cms.description,
                     style: TextThemes.subtitleTextStyle,
                     textAlign: TextAlign.center,
                   ),
@@ -34,7 +35,7 @@ class StartPage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 32.0),
                   child: CallToAction(
-                    text: AppConstants().ctaText,
+                    text: cms.ctaText,
                     onPressed: () {},
                   ),
                 ),
