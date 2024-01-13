@@ -6,6 +6,14 @@ enum CallToActionType {
   secondary,
   tertiary,
   danger,
+  text,
+  dark,
+}
+
+enum CallToActionSize {
+  small,
+  medium,
+  large,
 }
 
 class CallToAction extends StatelessWidget {
@@ -14,6 +22,8 @@ class CallToAction extends StatelessWidget {
   final void Function() onPressed;
   final void Function()? onLongPressed;
   final CallToActionType type;
+  final bool isFullWidth;
+  final CallToActionSize size;
 
   const CallToAction({
     super.key,
@@ -22,69 +32,26 @@ class CallToAction extends StatelessWidget {
     this.onLongPressed,
     this.icon,
     this.type = CallToActionType.primary,
+    this.isFullWidth = true,
+    this.size = CallToActionSize.medium,
   });
 
   @override
   Widget build(BuildContext context) {
-    TextButtonThemeData primaryTheme = TextButtonThemeData(
-      style: TextButton.styleFrom(
-        backgroundColor: AppColors.accentColor,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(32),
-          ),
-        ),
-      ),
-    );
-
-    TextButtonThemeData secondaryTheme = TextButtonThemeData(
-      style: TextButton.styleFrom(
-        backgroundColor: AppColors.tertiaryColor,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(32),
-          ),
-        ),
-      ),
-    );
-
-    TextButtonThemeData tertiaryTheme = TextButtonThemeData(
-      style: TextButton.styleFrom(
-        backgroundColor: AppColors.backgroundColor,
-        shape: const RoundedRectangleBorder(
-          side: BorderSide(
-            width: 2,
-            color: AppColors.textSecondaryColor,
-            strokeAlign: 0,
-          ),
-          borderRadius: BorderRadius.all(
-            Radius.circular(32),
-          ),
-        ),
-      ),
-    );
-
-    TextButtonThemeData dangerTheme = TextButtonThemeData(
-      style: TextButton.styleFrom(
-        backgroundColor: AppColors.dangerColor,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(32),
-          ),
-        ),
-      ),
-    );
-
     getButtonTheme() {
       switch (type) {
         case CallToActionType.primary:
-          return primaryTheme;
+          return CallToActionTheme.primaryTheme;
         case CallToActionType.secondary:
-          return secondaryTheme;
+          return CallToActionTheme.secondaryTheme;
         case CallToActionType.tertiary:
-          return tertiaryTheme;
+          return CallToActionTheme.tertiaryTheme;
         case CallToActionType.danger:
-          return dangerTheme;
+          return CallToActionTheme.dangerTheme;
+        case CallToActionType.text:
+          return CallToActionTheme.nakedTheme;
+        case CallToActionType.dark:
+          return CallToActionTheme.darkTheme;
       }
     }
 
@@ -98,6 +65,21 @@ class CallToAction extends StatelessWidget {
           return AppColors.textSecondaryColor;
         case CallToActionType.danger:
           return AppColors.textQuaternaryColor;
+        case CallToActionType.text:
+          return AppColors.textTertiaryColor;
+        case CallToActionType.dark:
+          return AppColors.textQuaternaryColor;
+      }
+    }
+
+    getSize() {
+      switch (size) {
+        case CallToActionSize.small:
+          return 2.0;
+        case CallToActionSize.medium:
+          return 6.0;
+        case CallToActionSize.large:
+          return 10.0;
       }
     }
 
@@ -108,36 +90,42 @@ class CallToAction extends StatelessWidget {
           )
         : null;
 
-    return TextButton(
+    Widget callToActionWidget = TextButton(
       style: getButtonTheme().style,
       onPressed: onPressed,
       onLongPress: onLongPressed,
-      child: Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 6.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(child: iconItem),
-              Text(
-                text,
-                style: TextThemes.ctaTextStyle.copyWith(
-                  color: getTextColor(),
-                  shadows: type == CallToActionType.primary
-                      ? [
-                          const Shadow(
-                            color: Color(0x33000000),
-                            offset: Offset(0, 4),
-                            blurRadius: 4,
-                          ),
-                        ]
-                      : [],
-                ),
+      child: Padding(
+        padding: EdgeInsets.symmetric(vertical: getSize(), horizontal: 0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(child: iconItem),
+            const SizedBox(width: 3.0),
+            Text(
+              text,
+              style: TextThemes.ctaTextStyle.copyWith(
+                letterSpacing: 0.2,
+                color: getTextColor(),
+                shadows: type == CallToActionType.primary
+                    ? [
+                        const Shadow(
+                          color: Color(0x33000000),
+                          offset: Offset(0, 4),
+                          blurRadius: 4,
+                        ),
+                      ]
+                    : [],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
+
+    return isFullWidth
+        ? callToActionWidget
+        : IntrinsicWidth(
+            child: callToActionWidget,
+          );
   }
 }
