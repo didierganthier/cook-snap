@@ -34,7 +34,7 @@ class AppColors {
   static const Color textSecondaryColor = Color(0xFF9FA5C0);
   static const Color textTertiaryColor = Color(0xFF2E3E5C);
   static const Color textQuaternaryColor = Color(0xFFFFFFFF);
-  static const Color dangerColor = Color(0xFFFF6464);
+  static const Color dangerColor = Color(0xFFFF5842);
 }
 
 class TextThemes {
