@@ -20,9 +20,22 @@ class EmailPasswordForm extends StatelessWidget {
           type: InputFieldType.password,
           hint: cms.passwordFieldLabel,
         ),
-        const SizedBox(height: 32),
+        const SizedBox(height: 8.0),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            CallToAction(
+              text: cms.forgotPasswordCtalabel,
+              type: CallToActionType.text,
+              isFullWidth: false,
+              size: CallToActionSize.small,
+              onPressed: () {},
+            ),
+          ],
+        ),
+        const SizedBox(height: 18),
         CallToAction(
-          text: 'Login',
+          text: cms.loginCtaLabel,
           type: CallToActionType.primary,
           onPressed: () {
             // todo: email password login

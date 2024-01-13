@@ -2,6 +2,7 @@ import 'package:cook_snap/app/constants/app_constants.dart';
 import 'package:cook_snap/app/constants/constant_classes/login_page_constants.dart';
 import 'package:cook_snap/app/data/services/supabase_service.dart';
 import 'package:cook_snap/app/ui/widgets/page_specific/login_page/email_password_form.dart';
+import 'package:cook_snap/app/ui/widgets/page_specific/login_page/sign_up_cta.dart';
 import 'package:cook_snap/app/ui/widgets/shared/call_to_action.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +11,7 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cms = LoginPageConstants.getConstants();
+    final LoginPageConstants cms = LoginPageConstants.getConstants();
     return Scaffold(
       body: Center(
         child: Column(
@@ -30,14 +31,31 @@ class LoginPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 32),
                   EmailPasswordForm(cms: cms),
-                  const SizedBox(height: 64),
+                  const SizedBox(height: 32),
+                  SignUpCallToAction(
+                    cms: cms,
+                    onPressed: () {},
+                  ),
+                  const SizedBox(height: 24),
+                  Text(
+                    cms.orContinueWithLabel,
+                    style: TextThemes.subtitleTextStyle,
+                  ),
+                  const SizedBox(height: 24),
                   CallToAction(
-                    text: 'Google',
+                    text: cms.googleCtaLabel,
                     type: CallToActionType.danger,
                     icon: Icons.group_work_outlined,
                     onPressed: () {
                       SupabaseService().signInWithGoogle();
                     },
+                  ),
+                  const SizedBox(height: 18),
+                  CallToAction(
+                    text: cms.appleCtaLabel,
+                    type: CallToActionType.dark,
+                    icon: Icons.group_work_outlined,
+                    onPressed: () {},
                   ),
                 ],
               ),
