@@ -1,5 +1,7 @@
 import 'package:cook_snap/app/constants/app_constants.dart';
 import 'package:cook_snap/app/constants/constant_classes/login_page_constants.dart';
+import 'package:cook_snap/app/data/services/supabase_service.dart';
+import 'package:cook_snap/app/ui/widgets/call_to_action.dart';
 import 'package:cook_snap/app/ui/widgets/input_field.dart';
 import 'package:flutter/material.dart';
 
@@ -27,6 +29,14 @@ class LoginPage extends StatelessWidget {
                 InputField(
                   type: InputFieldType.email,
                   hint: cms.emailFieldLabel,
+                ),
+                CallToAction(
+                  text: 'Google',
+                  type: CallToActionType.danger,
+                  icon: Icons.group_work_outlined,
+                  onPressed: () {
+                    GoogleSignInService().signIn();
+                  },
                 ),
               ],
             ),
