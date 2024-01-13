@@ -35,7 +35,7 @@ class LoginPage extends StatelessWidget {
                   type: CallToActionType.danger,
                   icon: Icons.group_work_outlined,
                   onPressed: () {
-                    GoogleSignInService().signIn();
+                    SupabaseService().signInWithGoogle();
                   },
                 ),
               ],
