@@ -1,6 +1,10 @@
 import 'package:cook_snap/app/constants/app_constants.dart';
+import 'package:cook_snap/app/data/services/apple_sign_in_service.dart';
+import 'package:cook_snap/app/ui/screens/login/apple_sign_in_screen.dart';
+import 'package:cook_snap/app/ui/viewmodels/apple_sign_in_viewmodel.dart';
 import 'package:cook_snap/app/ui/widgets/call_to_action.dart';
 import 'package:flutter/material.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class StartPage extends StatelessWidget {
   const StartPage({super.key});
@@ -35,7 +39,21 @@ class StartPage extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 32.0),
                   child: CallToAction(
                     text: AppConstants().ctaText,
-                    onPressed: () {},
+                    onPressed: () {
+                      SupabaseClient client = Supabase.instance.client;
+                      AppleSignInService _appleSignInService =
+                          AppleSignInService(client);
+                      AppleSignInViewModel _appleSignInViewModel =
+                          AppleSignInViewModel(_appleSignInService);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => AppleSignInScreen(
+                            viewModel: _appleSignInViewModel,
+                          ),
+                        ),
+                      );
+                    },
                   ),
                 ),
               ],
