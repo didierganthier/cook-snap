@@ -1,5 +1,5 @@
 import 'package:cook_snap/app/constants/app_constants.dart';
-import 'package:cook_snap/app/ui/widgets/call_to_action.dart';
+import 'package:cook_snap/app/ui/widgets/shared/call_to_action.dart';
 import 'package:flutter/material.dart';
 
 class StartPage extends StatelessWidget {
