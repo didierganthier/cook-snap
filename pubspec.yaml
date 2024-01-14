@@ -85,6 +85,9 @@ flutter:
     - family: Inter
       fonts:
         - asset: lib/assets/fonts/inter_variable_font.ttf
+    - family: CookSnapIcons
+      fonts:
+        - asset: lib/assets/fonts/CookSnapIcons.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
