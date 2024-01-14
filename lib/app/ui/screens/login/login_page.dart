@@ -4,6 +4,7 @@ import 'package:cook_snap/app/data/services/supabase_service.dart';
 import 'package:cook_snap/app/ui/widgets/page_specific/login_page/email_password_form.dart';
 import 'package:cook_snap/app/ui/widgets/page_specific/login_page/sign_up_cta.dart';
 import 'package:cook_snap/app/ui/widgets/shared/call_to_action.dart';
+import 'package:cook_snap/utils/cook_snap_icons.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
@@ -45,7 +46,7 @@ class LoginPage extends StatelessWidget {
                   CallToAction(
                     text: cms.googleCtaLabel,
                     type: CallToActionType.danger,
-                    icon: Icons.group_work_outlined,
+                    icon: CookSnapIcons.google,
                     onPressed: () {
                       SupabaseService().signInWithGoogle();
                     },
@@ -54,7 +55,7 @@ class LoginPage extends StatelessWidget {
                   CallToAction(
                     text: cms.appleCtaLabel,
                     type: CallToActionType.dark,
-                    icon: Icons.group_work_outlined,
+                    icon: CookSnapIcons.apple,
                     onPressed: () {},
                   ),
                 ],

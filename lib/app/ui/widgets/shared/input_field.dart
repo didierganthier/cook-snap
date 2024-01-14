@@ -1,4 +1,5 @@
 import 'package:cook_snap/app/constants/app_constants.dart';
+import 'package:cook_snap/utils/cook_snap_icons.dart';
 import 'package:flutter/material.dart';
 
 enum InputFieldType { email, password }
@@ -37,18 +38,21 @@ class _InputFieldState extends State<InputField> {
       IconData iconData;
       switch (widget.type) {
         case InputFieldType.email:
-          iconData = Icons.email_outlined;
+          iconData = CookSnapIcons.message;
         case InputFieldType.password:
-          iconData = Icons.lock_outline;
+          iconData = CookSnapIcons.lock;
       }
-      return Icon(iconData);
+      return Icon(iconData, size: 18.0);
     }
 
     Widget? getSuffixIcon() {
       switch (widget.type) {
         case InputFieldType.password:
           return IconButton(
-            icon: const Icon(Icons.remove_red_eye_outlined),
+            icon: const Icon(
+              Icons.remove_red_eye_outlined,
+              size: 18.0,
+            ),
             color: AppColors.secondaryColor,
             onPressed: () {
               setState(() {

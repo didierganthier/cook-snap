@@ -83,12 +83,8 @@ class CallToAction extends StatelessWidget {
       }
     }
 
-    var iconItem = icon != null
-        ? Icon(
-            icon,
-            color: getTextColor(),
-          )
-        : null;
+    Icon? iconItem =
+        icon != null ? Icon(icon, color: getTextColor(), size: 16.0) : null;
 
     Widget callToActionWidget = TextButton(
       style: getButtonTheme().style,
@@ -98,9 +94,10 @@ class CallToAction extends StatelessWidget {
         padding: EdgeInsets.symmetric(vertical: getSize(), horizontal: 0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(child: iconItem),
-            const SizedBox(width: 3.0),
+            iconItem ?? const SizedBox(width: 0.0),
+            SizedBox(width: icon != null ? 8.0 : 0.0),
             Text(
               text,
               style: TextThemes.ctaTextStyle.copyWith(
