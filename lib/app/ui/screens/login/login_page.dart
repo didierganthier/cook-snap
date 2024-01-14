@@ -14,6 +14,7 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final LoginPageConstants cms = LoginPageConstants.getConstants();
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
