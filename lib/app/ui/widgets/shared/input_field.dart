@@ -22,6 +22,38 @@ class InputField extends StatefulWidget {
 
 class _InputFieldState extends State<InputField> {
   bool isPasswordVisible = false;
+  late FocusNode focusNode;
+  late TextEditingController _controller;
+  // control booleans
+  bool isFocused = false;
+  bool hasValue = false;
+
+  @override
+  void initState() {
+    super.initState();
+    //  initialize focus node
+    focusNode = FocusNode();
+    focusNode.addListener(() {
+      setState(() {
+        isFocused = focusNode.hasFocus;
+      });
+    });
+
+    // initialize controller
+    _controller = TextEditingController();
+    _controller.addListener(() {
+      setState(() {
+        hasValue = _controller.text.isNotEmpty;
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    focusNode.dispose();
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,35 +74,52 @@ class _InputFieldState extends State<InputField> {
         case InputFieldType.password:
           iconData = CookSnapIcons.lock;
       }
-      return Icon(iconData, size: 18.0);
+      return Icon(
+        iconData,
+        size: 18.0,
+        color: isFocused ? AppColors.accentColor : AppColors.primaryColor,
+      );
     }
 
     Widget? getSuffixIcon() {
       switch (widget.type) {
         case InputFieldType.password:
-          return IconButton(
-            icon: const Icon(
-              Icons.remove_red_eye_outlined,
-              size: 18.0,
-            ),
-            color: AppColors.secondaryColor,
-            onPressed: () {
-              setState(() {
-                isPasswordVisible = !isPasswordVisible;
-              });
-            },
-          );
+          return hasValue
+              ? IconButton(
+                  icon: const Icon(
+                    Icons.remove_red_eye_outlined,
+                    size: 18.0,
+                  ),
+                  color: AppColors.secondaryColor,
+                  onPressed: () {
+                    setState(() {
+                      isPasswordVisible = !isPasswordVisible;
+                    });
+                  },
+                )
+              : null;
         default:
           return null;
       }
     }
 
+    bool getObsureTextState() =>
+        widget.type == InputFieldType.password && !isPasswordVisible;
+
     return TextFormField(
-      obscureText: widget.type == InputFieldType.password && !isPasswordVisible,
+      controller: _controller,
+      focusNode: focusNode,
+      obscureText: getObsureTextState(),
       validator: widget.validator,
       style: TextThemes.textFieldsStyle,
       onTapOutside: (event) {
-        FocusScope.of(context).unfocus();
+        focusNode.unfocus();
+      },
+      onChanged: (value) {
+        setState(() {
+          hasValue = value.isNotEmpty;
+        });
+        // todo: pass the value to the parent widget
       },
       decoration: InputDecoration(
         enabledBorder: inputFieldBorder,
