@@ -30,7 +30,10 @@ class GoogleAuthService {
     try {
       final googleSignInInstance = await _googleSignIn();
       final googleUser = await googleSignInInstance.signIn();
-      final googleAuth = await googleUser!.authentication;
+      if (googleUser == null) {
+        throw 'No Google User found.';
+      }
+      final googleAuth = await googleUser.authentication;
       final accessToken = googleAuth.accessToken;
       final idToken = googleAuth.idToken;
 
