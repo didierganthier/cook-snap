@@ -14,25 +14,28 @@ class SignUpCallToAction extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onPressed,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            cms.dontHaveAccountLabel,
-            style: TextThemes.textFieldsStyle,
-          ),
-          const SizedBox(width: 6),
-          Text(
-            cms.signupCtaLabel,
-            style: TextThemes.textFieldsStyle.copyWith(
-              color: AppColors.accentColor,
-              fontWeight: FontWeight.bold,
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+          cms.dontHaveAccountLabel,
+          style: TextThemes.textFieldsStyle,
+        ),
+        InkWell(
+          onTap: onPressed,
+          customBorder: const StadiumBorder(),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              cms.signupCtaLabel,
+              style: TextThemes.textFieldsStyle.copyWith(
+                color: AppColors.accentColor,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

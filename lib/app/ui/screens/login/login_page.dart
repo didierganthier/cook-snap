@@ -33,7 +33,7 @@ class LoginPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 32),
                   EmailPasswordForm(cms: cms),
-                  const SizedBox(height: 32),
+                  const SizedBox(height: 24),
                   SignUpCallToAction(
                     cms: cms,
                     onPressed: () {},
