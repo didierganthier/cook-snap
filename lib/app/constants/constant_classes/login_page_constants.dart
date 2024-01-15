@@ -7,6 +7,7 @@ class LoginPageConstants extends AppConstants {
   String loginCtaLabel;
   String orContinueWithLabel;
   String googleCtaLabel;
+  String appleCtaLabel;
   String dontHaveAccountLabel;
   String signupCtaLabel;
 
@@ -17,6 +18,7 @@ class LoginPageConstants extends AppConstants {
     required this.loginCtaLabel,
     required this.orContinueWithLabel,
     required this.googleCtaLabel,
+    required this.appleCtaLabel,
     required this.dontHaveAccountLabel,
     required this.signupCtaLabel,
     required super.title,
@@ -32,8 +34,9 @@ class LoginPageConstants extends AppConstants {
       passwordFieldLabel: 'Password',
       forgotPasswordCtalabel: 'Forgot password?',
       loginCtaLabel: 'Login',
-      orContinueWithLabel: 'Or continue with',
-      googleCtaLabel: 'Google',
+      orContinueWithLabel: 'Or',
+      googleCtaLabel: 'Continue with Google',
+      appleCtaLabel: 'Continue with Apple',
       dontHaveAccountLabel: 'Don’t have an account?',
       signupCtaLabel: 'Sign up',
     );

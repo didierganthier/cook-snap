@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Cook Snap',
       theme: ThemeData(
+        fontFamily: 'Inter',
         brightness: Brightness.light,
         scaffoldBackgroundColor: AppColors.backgroundColor,
         colorScheme: const ColorScheme.light(

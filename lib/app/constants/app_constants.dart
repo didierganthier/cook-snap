@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 class AppConstants {
@@ -34,19 +36,26 @@ class AppColors {
   static const Color textSecondaryColor = Color(0xFF9FA5C0);
   static const Color textTertiaryColor = Color(0xFF2E3E5C);
   static const Color textQuaternaryColor = Color(0xFFFFFFFF);
-  static const Color dangerColor = Color(0xFFFF6464);
+  static const Color dangerColor = Color(0xFFFF5842);
+  static const Color darkColor = Color(0xFF000000);
 }
 
 class TextThemes {
   static const TextStyle ctaTextStyle = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.bold,
+    fontVariations: [
+      FontVariation('wght', 700),
+    ],
     letterSpacing: 0.7,
   );
 
   static const TextStyle titleTextStyle = TextStyle(
     fontSize: 22,
     fontWeight: FontWeight.bold,
+    fontVariations: [
+      FontVariation('wght', 700),
+    ],
     letterSpacing: 0.8,
     color: AppColors.textTertiaryColor,
     height: 2.5,
@@ -55,6 +64,9 @@ class TextThemes {
   static const TextStyle subtitleTextStyle = TextStyle(
     fontSize: 17,
     fontWeight: FontWeight.normal,
+    fontVariations: [
+      FontVariation('wght', 400),
+    ],
     letterSpacing: 0.5,
     height: 1.2,
     color: AppColors.textSecondaryColor,
@@ -63,6 +75,9 @@ class TextThemes {
   static const TextStyle textFieldsHintStyle = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.w500,
+    fontVariations: [
+      FontVariation('wght', 500),
+    ],
     letterSpacing: 0.5,
     color: AppColors.textSecondaryColor,
   );
@@ -70,7 +85,83 @@ class TextThemes {
   static const TextStyle textFieldsStyle = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.w500,
+    fontVariations: [
+      FontVariation('wght', 500),
+    ],
     letterSpacing: 0.5,
     color: AppColors.textColor,
+  );
+}
+
+class CallToActionTheme {
+  static TextButtonThemeData primaryTheme = TextButtonThemeData(
+    style: TextButton.styleFrom(
+      backgroundColor: AppColors.accentColor,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(
+          Radius.circular(32),
+        ),
+      ),
+    ),
+  );
+
+  static TextButtonThemeData secondaryTheme = TextButtonThemeData(
+    style: TextButton.styleFrom(
+      backgroundColor: AppColors.tertiaryColor,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(
+          Radius.circular(32),
+        ),
+      ),
+    ),
+  );
+
+  static TextButtonThemeData tertiaryTheme = TextButtonThemeData(
+    style: TextButton.styleFrom(
+      backgroundColor: AppColors.backgroundColor,
+      shape: const RoundedRectangleBorder(
+        side: BorderSide(
+          width: 2,
+          color: AppColors.textSecondaryColor,
+          strokeAlign: 0,
+        ),
+        borderRadius: BorderRadius.all(
+          Radius.circular(32),
+        ),
+      ),
+    ),
+  );
+
+  static TextButtonThemeData dangerTheme = TextButtonThemeData(
+    style: TextButton.styleFrom(
+      backgroundColor: AppColors.dangerColor,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(
+          Radius.circular(32),
+        ),
+      ),
+    ),
+  );
+
+  static TextButtonThemeData nakedTheme = TextButtonThemeData(
+    style: TextButton.styleFrom(
+      backgroundColor: Colors.transparent,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(
+          Radius.circular(32),
+        ),
+      ),
+    ),
+  );
+
+  static TextButtonThemeData darkTheme = TextButtonThemeData(
+    style: TextButton.styleFrom(
+      backgroundColor: AppColors.darkColor,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(
+          Radius.circular(32),
+        ),
+      ),
+    ),
   );
 }
