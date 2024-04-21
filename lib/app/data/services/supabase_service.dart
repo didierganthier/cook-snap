@@ -1,4 +1,5 @@
 import 'package:cook_snap/app/data/services/google_auth_service.dart';
+import 'package:flutter/foundation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class SupabaseService {
@@ -11,9 +12,17 @@ class SupabaseService {
     });
   }
 
-  Future<void> signInWithGoogle() async {
-    await _googleAuthService.signIn();
-    // Perform additional authentication with Supabase
+  Future<AuthResponse?> signInWithGoogle() async {
+    try {
+      final authResponse = await _googleAuthService.signIn();
+      // Perform additional authentication with Supabase
+      return authResponse;
+    } catch (e) {
+      if (kDebugMode) {
+        print(e);
+      }
+      return null;
+    }
   }
 
   Future<void> signOut() async {
