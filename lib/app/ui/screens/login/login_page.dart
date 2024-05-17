@@ -81,7 +81,7 @@ class LoginPage extends StatelessWidget {
                               )
                               .then((value) => {
                                     ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
+                                      const SnackBar(
                                         content: Text(
                                             'Successfully signed in with Google'),
                                       ),

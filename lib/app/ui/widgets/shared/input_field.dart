@@ -6,6 +6,7 @@ enum InputFieldType { email, password }
 
 class InputField extends StatefulWidget {
   final String? Function(String?)? validator;
+  final TextEditingController? inputController;
   final InputFieldType type;
   final String? hint;
 
@@ -14,6 +15,7 @@ class InputField extends StatefulWidget {
     this.validator,
     this.type = InputFieldType.email,
     this.hint,
+    this.inputController,
   });
 
   @override
@@ -40,7 +42,12 @@ class _InputFieldState extends State<InputField> {
     });
 
     // initialize controller
-    _controller = TextEditingController();
+    if (widget.inputController != null) {
+      _controller = widget.inputController!;
+    } else {
+      _controller = TextEditingController();
+    }
+
     _controller.addListener(() {
       setState(() {
         hasValue = _controller.text.isNotEmpty;
