@@ -11,8 +11,14 @@ class LoginHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(cms.title, style: TextThemes.titleTextStyle),
-        Text(cms.subtitle, style: TextThemes.subtitleTextStyle),
+        Text(
+          cms.title,
+          style: TextThemes.titleTextStyle,
+        ),
+        Text(
+          cms.subtitle,
+          style: TextThemes.subtitleTextStyle,
+        ),
       ],
     );
   }

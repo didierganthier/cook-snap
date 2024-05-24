@@ -1,6 +1,7 @@
-import 'package:cook_snap/app/constants/app_constants.dart';
 import 'package:cook_snap/app/constants/constant_classes/signup_page_constants.dart';
 import 'package:cook_snap/app/ui/widgets/page_specific/signup_page/email_password_form.dart';
+import 'package:cook_snap/app/ui/widgets/page_specific/signup_page/signup_header.dart';
+import 'package:cook_snap/app/ui/widgets/page_specific/signup_page/social_signup_options.dart';
 import 'package:flutter/material.dart';
 
 class SignUpPage extends StatelessWidget {
@@ -15,7 +16,7 @@ class SignUpPage extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 18.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               SignUpHeader(cms: cms),
               const SizedBox(height: 32),

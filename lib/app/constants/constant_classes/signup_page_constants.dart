@@ -6,6 +6,9 @@ class SignUpPageConstants extends AppConstants {
   String confirmPasswordFieldLabel;
   String passwordMustContainLabel;
   String signupCtaLabel;
+  String orContinueWithLabel;
+  String googleCtaLabel;
+  String appleCtaLabel;
 
   SignUpPageConstants({
     required this.emailFieldLabel,
@@ -13,6 +16,9 @@ class SignUpPageConstants extends AppConstants {
     required this.passwordMustContainLabel,
     required this.confirmPasswordFieldLabel,
     required this.signupCtaLabel,
+    required this.orContinueWithLabel,
+    required this.googleCtaLabel,
+    required this.appleCtaLabel,
     required super.subtitle,
     required super.title,
     super.description,
@@ -27,6 +33,9 @@ class SignUpPageConstants extends AppConstants {
       confirmPasswordFieldLabel: 'Confirm Password',
       signupCtaLabel: 'Sign up',
       passwordMustContainLabel: 'Password must contain:',
+      orContinueWithLabel: 'Or',
+      googleCtaLabel: 'Continue with Google',
+      appleCtaLabel: 'Continue with Apple',
     );
   }
 }

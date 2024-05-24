@@ -11,22 +11,25 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final LoginPageConstants cms = LoginPageConstants.getConstants();
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 18.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              LoginHeader(cms: cms),
-              const SizedBox(height: 32),
-              EmailPasswordForm(cms: cms),
-              const SizedBox(height: 24),
-              SignUpCTA(cms: cms),
-              const SizedBox(height: 24),
-              SocialLoginOptions(cms: cms),
-            ],
+    return SafeArea(
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        body: Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 18.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                const SizedBox(height: 32),
+                LoginHeader(cms: cms),
+                const SizedBox(height: 32),
+                EmailPasswordForm(cms: cms),
+                const SizedBox(height: 24),
+                SignUpCTA(cms: cms),
+                const SizedBox(height: 24),
+                SocialLoginOptions(cms: cms),
+              ],
+            ),
           ),
         ),
       ),
