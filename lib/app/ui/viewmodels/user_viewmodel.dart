@@ -1,10 +1,36 @@
+// user_viewmodel.dart
 import 'package:cook_snap/app/data/repositories/user_repository.dart';
-import 'package:flutter/foundation.dart';
+import 'package:cook_snap/app/data/services/supabase_service.dart';
+import 'package:flutter/material.dart';
 
 class UserViewModel extends ChangeNotifier {
-  final UserRepository userRepository;
+  final UserRepository _userRepository;
 
-  UserViewModel(this.userRepository);
+  UserViewModel(this._userRepository);
+
+  Future<void> signInWithGoogle(BuildContext context) async {
+    try {
+      final value = await SupabaseService().signInWithGoogle();
+      if (value != null) {
+        final String userId = value.user!.id;
+        final String username = value.user!.email ?? '';
+        final String email = value.user!.email ?? '';
+
+        await saveUserData(userId: userId, username: username, email: email);
+
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Successfully signed in with Google')),
+        );
+      } else {
+        print('Error: Authentication response is null.');
+      }
+    } catch (error) {
+      print('Error signing in with Google: $error');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error signing in with Google: $error')),
+      );
+    }
+  }
 
   Future<void> saveUserData({
     required String userId,
@@ -13,17 +39,11 @@ class UserViewModel extends ChangeNotifier {
     // Add other user data fields as needed
   }) async {
     try {
-      await userRepository.saveUserData(
-        userId: userId,
-        username: username,
-        email: email,
-        // Add other user data fields as needed
-      );
-      // Notify listeners if needed
-      notifyListeners();
-    } catch (e) {
-      // Handle the error, e.g., show an error message to the user
-      print('Error in saveUserData: $e');
+      await _userRepository.saveUserData(
+          userId: userId, username: username, email: email);
+    } catch (error) {
+      print('Error saving user data: $error');
+      throw error;
     }
   }
 }

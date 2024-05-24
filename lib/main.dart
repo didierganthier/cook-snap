@@ -1,8 +1,10 @@
 import 'package:cook_snap/app/app.dart';
 import 'package:cook_snap/app/constants/app_constants.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:cook_snap/app/data/repositories/user_repository.dart';
+import 'package:cook_snap/app/ui/viewmodels/user_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:provider/provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 Future<void> main() async {
@@ -13,7 +15,16 @@ Future<void> main() async {
     anonKey: dotenv.env['SUPABASE_ANON_KEY']!,
   );
 
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        Provider(create: (_) => UserRepository(Supabase.instance.client)),
+        ChangeNotifierProvider(
+            create: (context) => UserViewModel(context.read<UserRepository>())),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

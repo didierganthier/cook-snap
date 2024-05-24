@@ -30,7 +30,7 @@ class LoginPageConstants extends AppConstants {
     return LoginPageConstants(
       title: "Welcome Back!",
       subtitle: "Please enter your account here",
-      emailFieldLabel: 'Email or phone number',
+      emailFieldLabel: 'Email',
       passwordFieldLabel: 'Password',
       forgotPasswordCtalabel: 'Forgot password?',
       loginCtaLabel: 'Login',
