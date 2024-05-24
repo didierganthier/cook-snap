@@ -22,7 +22,7 @@ Future<void> main() async {
         ChangeNotifierProvider(
             create: (context) => UserViewModel(context.read<UserRepository>())),
       ],
-      child: MyApp(),
+      child: const MyApp(),
     ),
   );
 }
