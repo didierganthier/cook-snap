@@ -3,7 +3,7 @@ import 'package:cook_snap/app/data/repositories/user_repository.dart';
 import 'package:cook_snap/app/data/services/supabase_service.dart';
 import 'package:flutter/material.dart';
 
-class UserViewModel {
+class UserViewModel extends ChangeNotifier {
   final UserRepository _userRepository;
 
   UserViewModel(this._userRepository);
