@@ -2,8 +2,8 @@ import 'package:cook_snap/app/constants/app_constants.dart';
 import 'package:cook_snap/app/constants/constant_classes/login_page_constants.dart';
 import 'package:flutter/material.dart';
 
-class _LoginHeader extends StatelessWidget {
-  const _LoginHeader({required this.cms});
+class LoginHeader extends StatelessWidget {
+  const LoginHeader({required this.cms});
 
   final LoginPageConstants cms;
 

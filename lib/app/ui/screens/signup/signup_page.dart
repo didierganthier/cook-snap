@@ -21,6 +21,10 @@ class _SignUpPageState extends State<SignUpPage> {
           padding: const EdgeInsets.symmetric(horizontal: 18.0),
           child: Column(
             children: [
+              const Text(
+                'CookSnap',
+                style: TextThemes.titleTextStyle,
+              ),
               Text(
                 cms.title,
                 style: TextThemes.titleTextStyle,

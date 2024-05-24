@@ -6,8 +6,8 @@ import 'package:cook_snap/utils/cook_snap_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class _SocialLoginOptions extends StatelessWidget {
-  const _SocialLoginOptions({required this.cms});
+class SocialLoginOptions extends StatelessWidget {
+  const SocialLoginOptions({required this.cms});
 
   final LoginPageConstants cms;
 
