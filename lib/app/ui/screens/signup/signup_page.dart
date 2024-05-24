@@ -3,14 +3,9 @@ import 'package:cook_snap/app/constants/constant_classes/signup_page_constants.d
 import 'package:cook_snap/app/ui/widgets/page_specific/signup_page/email_password_form.dart';
 import 'package:flutter/material.dart';
 
-class SignUpPage extends StatefulWidget {
+class SignUpPage extends StatelessWidget {
   const SignUpPage({super.key});
 
-  @override
-  State<SignUpPage> createState() => _SignUpPageState();
-}
-
-class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     final SignUpPageConstants cms = SignUpPageConstants.getConstants();
@@ -20,23 +15,13 @@ class _SignUpPageState extends State<SignUpPage> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 18.0),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              const Text(
-                'CookSnap',
-                style: TextThemes.titleTextStyle,
-              ),
-              Text(
-                cms.title,
-                style: TextThemes.titleTextStyle,
-              ),
-              Text(
-                cms.subtitle,
-                style: TextThemes.subtitleTextStyle,
-              ),
+              SignUpHeader(cms: cms),
               const SizedBox(height: 32),
-              SignUpEmailPasswordForm(
-                cms: cms,
-              ),
+              SignUpEmailPasswordForm(cms: cms),
+              const SizedBox(height: 24),
+              SocialSignUpOptions(cms: cms),
               const SizedBox(height: 32),
             ],
           ),
