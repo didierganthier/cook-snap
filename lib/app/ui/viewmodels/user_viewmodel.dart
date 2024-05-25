@@ -38,6 +38,11 @@ class UserViewModel extends ChangeNotifier {
     }
   }
 
+  void signOut() {
+    _user = null;
+    notifyListeners();
+  }
+
   Future<void> saveUserData({
     required String userId,
     required String username,
