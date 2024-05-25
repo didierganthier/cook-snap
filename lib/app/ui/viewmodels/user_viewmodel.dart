@@ -2,11 +2,17 @@
 import 'package:cook_snap/app/data/repositories/user_repository.dart';
 import 'package:cook_snap/app/data/services/supabase_service.dart';
 import 'package:flutter/material.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class UserViewModel extends ChangeNotifier {
   final UserRepository _userRepository;
+  User? _user;
 
   UserViewModel(this._userRepository);
+
+  User? get user => _user;
+
+  bool get isLoggedIn => _user != null;
 
   Future<void> signInWithGoogle(BuildContext context) async {
     try {
