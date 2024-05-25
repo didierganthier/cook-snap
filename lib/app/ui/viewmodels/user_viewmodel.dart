@@ -27,13 +27,16 @@ class UserViewModel extends ChangeNotifier {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Successfully signed in with Google')),
         );
+
+        _user = value.user;
+        notifyListeners();
       } else {
         print('Error: Authentication response is null.');
       }
     } catch (error) {
-      print('Error signing in with Google: $error');
+      print('Error signing in with Google');
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error signing in with Google: $error')),
+        SnackBar(content: Text('Error signing in with Google')),
       );
     }
   }
@@ -53,8 +56,7 @@ class UserViewModel extends ChangeNotifier {
       await _userRepository.saveUserData(
           userId: userId, username: username, email: email);
     } catch (error) {
-      print('Error saving user data: $error');
-      throw error;
+      print('Error saving user data from UserViewModel');
     }
   }
 }
