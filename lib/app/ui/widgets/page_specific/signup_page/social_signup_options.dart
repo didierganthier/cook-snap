@@ -1,5 +1,4 @@
 import 'package:cook_snap/app/constants/app_constants.dart';
-import 'package:cook_snap/app/constants/constant_classes/login_page_constants.dart';
 import 'package:cook_snap/app/constants/constant_classes/signup_page_constants.dart';
 import 'package:cook_snap/app/ui/viewmodels/user_viewmodel.dart';
 import 'package:cook_snap/app/ui/widgets/shared/call_to_action.dart';
