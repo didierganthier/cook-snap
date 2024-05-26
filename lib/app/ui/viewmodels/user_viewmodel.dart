@@ -2,21 +2,37 @@
 import 'package:cook_snap/app/data/repositories/user_repository.dart';
 import 'package:cook_snap/app/data/services/supabase_service.dart';
 import 'package:flutter/material.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class UserViewModel extends ChangeNotifier {
   final UserRepository _userRepository;
+  User? _user;
 
-  UserViewModel(this._userRepository);
+  UserViewModel(this._userRepository) {
+    _loadUserSession();
+  }
+
+  User? get user => _user;
+
+  bool get isLoggedIn => _user != null;
+
+  Future<void> _loadUserSession() async {
+    await SupabaseService().restoreSession();
+    _user = Supabase.instance.client.auth.currentUser;
+    notifyListeners();
+  }
 
   Future<void> signInWithGoogle(BuildContext context) async {
     try {
-      final value = await SupabaseService().signInWithGoogle();
+      final AuthResponse? value = await SupabaseService().signInWithGoogle();
       if (value != null) {
         final String userId = value.user!.id;
         final String username = value.user!.email ?? '';
         final String email = value.user!.email ?? '';
 
         await saveUserData(userId: userId, username: username, email: email);
+        _user = value.user;
+        notifyListeners();
 
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Successfully signed in with Google')),
@@ -27,9 +43,16 @@ class UserViewModel extends ChangeNotifier {
     } catch (error) {
       print('Error signing in with Google: $error');
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error signing in with Google: $error')),
+        SnackBar(
+            content: Text('Error signing in with Google from User ViewModel')),
       );
     }
+  }
+
+  void signOut() async {
+    await SupabaseService().signOut();
+    _user = null;
+    notifyListeners();
   }
 
   Future<void> saveUserData({
@@ -42,8 +65,7 @@ class UserViewModel extends ChangeNotifier {
       await _userRepository.saveUserData(
           userId: userId, username: username, email: email);
     } catch (error) {
-      print('Error saving user data: $error');
-      throw error;
+      print('Error saving user data from User ViewModel');
     }
   }
 }

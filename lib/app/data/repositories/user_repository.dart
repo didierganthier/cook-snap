@@ -28,7 +28,7 @@ class UserRepository {
       }
     } catch (e) {
       // Handle the error
-      print('Error saving user data: $e');
+      print('Error saving user data from User Repository');
       rethrow;
     }
   }
