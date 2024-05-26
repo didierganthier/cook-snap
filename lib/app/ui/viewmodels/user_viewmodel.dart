@@ -6,8 +6,20 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 class UserViewModel extends ChangeNotifier {
   final UserRepository _userRepository;
+  User? _user;
 
-  UserViewModel(this._userRepository);
+  UserViewModel(this._userRepository) {
+    _loadUserSession();
+  }
+
+  User? get user => _user;
+
+  bool get isLoggedIn => _user != null;
+
+  Future<void> _loadUserSession() async {
+    _user = Supabase.instance.client.auth.currentUser;
+    notifyListeners();
+  }
 
   Future<void> signInWithGoogle(BuildContext context) async {
     try {
