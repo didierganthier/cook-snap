@@ -6,17 +6,12 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 class UserViewModel extends ChangeNotifier {
   final UserRepository _userRepository;
-  User? _user;
 
   UserViewModel(this._userRepository);
 
-  User? get user => _user;
-
-  bool get isLoggedIn => _user != null;
-
   Future<void> signInWithGoogle(BuildContext context) async {
     try {
-      final value = await SupabaseService().signInWithGoogle();
+      final AuthResponse? value = await SupabaseService().signInWithGoogle();
       if (value != null) {
         final String userId = value.user!.id;
         final String username = value.user!.email ?? '';
@@ -27,23 +22,15 @@ class UserViewModel extends ChangeNotifier {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Successfully signed in with Google')),
         );
-
-        _user = value.user;
-        notifyListeners();
       } else {
         print('Error: Authentication response is null.');
       }
     } catch (error) {
-      print('Error signing in with Google');
+      print('Error signing in with Google: $error');
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error signing in with Google')),
+        SnackBar(content: Text('Error signing in with Google: $error')),
       );
     }
-  }
-
-  void signOut() {
-    _user = null;
-    notifyListeners();
   }
 
   Future<void> saveUserData({
@@ -56,7 +43,8 @@ class UserViewModel extends ChangeNotifier {
       await _userRepository.saveUserData(
           userId: userId, username: username, email: email);
     } catch (error) {
-      print('Error saving user data from UserViewModel');
+      print('Error saving user data: $error');
+      throw error;
     }
   }
 }
