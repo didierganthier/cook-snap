@@ -17,6 +17,7 @@ class UserViewModel extends ChangeNotifier {
   bool get isLoggedIn => _user != null;
 
   Future<void> _loadUserSession() async {
+    await SupabaseService().restoreSession();
     _user = Supabase.instance.client.auth.currentUser;
     notifyListeners();
   }
@@ -30,6 +31,8 @@ class UserViewModel extends ChangeNotifier {
         final String email = value.user!.email ?? '';
 
         await saveUserData(userId: userId, username: username, email: email);
+        _user = value.user;
+        notifyListeners();
 
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Successfully signed in with Google')),
@@ -40,7 +43,8 @@ class UserViewModel extends ChangeNotifier {
     } catch (error) {
       print('Error signing in with Google: $error');
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error signing in with Google: $error')),
+        SnackBar(
+            content: Text('Error signing in with Google from User ViewModel')),
       );
     }
   }
@@ -61,8 +65,7 @@ class UserViewModel extends ChangeNotifier {
       await _userRepository.saveUserData(
           userId: userId, username: username, email: email);
     } catch (error) {
-      print('Error saving user data: $error');
-      throw error;
+      print('Error saving user data from User ViewModel');
     }
   }
 }
