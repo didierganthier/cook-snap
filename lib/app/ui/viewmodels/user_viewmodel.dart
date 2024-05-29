@@ -7,6 +7,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 class UserViewModel extends ChangeNotifier {
   final UserRepository _userRepository;
   User? _user;
+  bool _loadingStatus = true;
 
   UserViewModel(this._userRepository) {
     _loadUserSession();
@@ -15,10 +16,12 @@ class UserViewModel extends ChangeNotifier {
   User? get user => _user;
 
   bool get isLoggedIn => _user != null;
+  bool get isLoading => _loadingStatus;
 
   Future<void> _loadUserSession() async {
     await SupabaseService().restoreSession();
     _user = Supabase.instance.client.auth.currentUser;
+    _loadingStatus = false;
     notifyListeners();
   }
 

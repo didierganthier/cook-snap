@@ -1,5 +1,6 @@
 import 'package:cook_snap/app/app.dart';
 import 'package:cook_snap/app/constants/app_constants.dart';
+import 'package:cook_snap/app/constants/routes.dart';
 import 'package:cook_snap/app/data/repositories/user_repository.dart';
 import 'package:cook_snap/app/ui/viewmodels/user_viewmodel.dart';
 import 'package:flutter/material.dart';
@@ -44,7 +45,8 @@ class MyApp extends StatelessWidget {
           secondary: AppColors.secondaryColor,
         ),
       ),
-      home: const App(),
+      routes: AppRoutes.routes,
+      initialRoute: AppRoutes.app,
     );
   }
 }
