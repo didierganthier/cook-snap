@@ -2,6 +2,7 @@ import 'package:cook_snap/app/app.dart';
 import 'package:cook_snap/app/ui/screens/home/home_page.dart';
 import 'package:cook_snap/app/ui/screens/login/login_page.dart';
 import 'package:cook_snap/app/ui/screens/signup/signup_page.dart';
+import 'package:cook_snap/utils/cook_snap_icons.dart';
 import 'package:flutter/material.dart';
 
 class AppRoutes {
@@ -16,4 +17,32 @@ class AppRoutes {
     login: (context) => const LoginPage(),
     signup: (context) => const SignUpPage(),
   };
+
+  static List<Map<String, dynamic>> bottomNavBarRoutes = [
+    {
+      'id': 0,
+      'icon': CookSnapIcons.home,
+      'label': 'Home',
+    },
+    {
+      'id': 1,
+      'icon': CookSnapIcons.edit,
+      'label': 'Upload',
+    },
+    {
+      'id': 2,
+      'icon': CookSnapIcons.scan,
+      'label': 'Scan',
+    },
+    {
+      'id': 3,
+      'icon': CookSnapIcons.notification,
+      'label': 'Notification',
+    },
+    {
+      'id': 4,
+      'icon': CookSnapIcons.profile,
+      'label': 'Profile',
+    }
+  ];
 }

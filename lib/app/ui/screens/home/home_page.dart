@@ -1,5 +1,7 @@
 // home_page.dart
 import 'package:cook_snap/app/constants/app_constants.dart';
+import 'package:cook_snap/app/ui/widgets/page_specific/home_page/scan_cta.dart';
+import 'package:cook_snap/app/ui/widgets/shared/bottom_nav.dart';
 import 'package:cook_snap/utils/cook_snap_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -25,32 +27,11 @@ class HomePage extends StatelessWidget {
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: BottomNavigationBar(
+      floatingActionButton: ScanBottomNavBarCta(
+        onPressed: () {},
+      ),
+      bottomNavigationBar: const BottomNavBar(
         currentIndex: 0,
-        selectedItemColor: AppColors.accentColor,
-        unselectedItemColor: AppColors.textSecondaryColor,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(CookSnapIcons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(CookSnapIcons.edit),
-            label: 'Upload',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(CookSnapIcons.scan),
-            label: 'Scan',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(CookSnapIcons.notification),
-            label: 'Notification',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(CookSnapIcons.profile),
-            label: 'Profile',
-          ),
-        ],
       ),
       body: Center(
         child: Column(
