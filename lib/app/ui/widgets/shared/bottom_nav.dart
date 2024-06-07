@@ -1,27 +1,16 @@
-import 'package:cook_snap/app/constants/app_constants.dart';
 import 'package:cook_snap/app/constants/routes.dart';
 import 'package:cook_snap/app/ui/widgets/shared/bottom_nav_item.dart';
-import 'package:cook_snap/utils/cook_snap_icons.dart';
 import 'package:flutter/material.dart';
 
-class BottomNavBar extends StatefulWidget {
+class BottomNavBar extends StatelessWidget {
   final int currentIndex;
-  const BottomNavBar({super.key, required this.currentIndex});
+  final void Function(int) onIndexChanged;
 
-  @override
-  State<BottomNavBar> createState() => _BottomNavBarState();
-}
-
-class _BottomNavBarState extends State<BottomNavBar> {
-  late int _currentItemIndex;
-
-  @override
-  void initState() {
-    super.initState();
-    setState(() {
-      _currentItemIndex = widget.currentIndex;
-    });
-  }
+  const BottomNavBar({
+    super.key,
+    required this.currentIndex,
+    required this.onIndexChanged,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -38,15 +27,13 @@ class _BottomNavBarState extends State<BottomNavBar> {
             return BottomNavBarItem(
               icon: route['icon'],
               label: route['label'],
-              isActive: _currentItemIndex == route['id'],
+              isActive: currentIndex == route['id'],
               isCallToAction: route['id'] == 2,
               onPressed: () {
-                setState(() {
-                  if (route['id'] == 2) {
-                    return;
-                  }
-                  _currentItemIndex = route['id'];
-                });
+                if (route['id'] == 2) {
+                  return;
+                }
+                onIndexChanged(route['id'] as int);
               },
             );
           }).toList(),
