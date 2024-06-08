@@ -91,6 +91,15 @@ class TextThemes {
     letterSpacing: 0.5,
     color: AppColors.textColor,
   );
+  static const TextStyle navLabelStyle = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+    fontVariations: [
+      FontVariation('wght', 500),
+    ],
+    letterSpacing: 0.5,
+    color: AppColors.textSecondaryColor,
+  );
 }
 
 class CallToActionTheme {
