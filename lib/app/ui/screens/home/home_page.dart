@@ -34,8 +34,10 @@ class _HomePageState extends State<HomePage> {
         actions: [
           IconButton(
             icon: const Icon(Icons.logout),
-            onPressed: () =>
-                Provider.of<UserViewModel>(context, listen: false).signOut(),
+            onPressed: () {
+              Provider.of<UserViewModel>(context, listen: false).signOut();
+              Navigator.of(context).pushNamed('/login');
+            },
           ),
         ],
       ),
