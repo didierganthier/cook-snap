@@ -53,9 +53,14 @@ class UserViewModel extends ChangeNotifier {
   }
 
   void signOut() async {
-    await SupabaseService().signOut();
-    _user = null;
-    notifyListeners();
+    await SupabaseService().signOut().then((_) {
+      print('User signed out');
+      _user = null;
+      print('User set to null');
+      notifyListeners();
+    }).catchError((error) {
+      print('Error signing out: $error');
+    });
   }
 
   Future<void> saveUserData({
